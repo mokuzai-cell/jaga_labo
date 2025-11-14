@@ -29,12 +29,13 @@ jobs:
         with:
           node-version: '22.x'
           # --- 修正 1-b: pnpmのキャッシュを有効化 ---
-          cache: 'pnpm'
-          cache-dependency-path: backend/pnpm-lock.yaml
+          #cache: 'pnpm'
+          #cache-dependency-path: backend/pnpm-lock.yaml
 
-      - name: pnpm install, build, and test
+      - name: pnpm install
         working-directory: ./backend
         run: |
+          rm -rf node_modules
           pnpm install
 
       - name: Upload artifact for deployment job
