@@ -18,22 +18,32 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # --- 修正 1: pnpmをセットアップ ---
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8 # pnpmのバージョンを指定 (8 or 9)
+
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
           node-version: '22.x'
+          # --- 修正 1-b: pnpmのキャッシュを有効化 ---
+          cache: 'pnpm'
+          cache-dependency-path: backend/pnpm-lock.yaml
 
-      - name: npm install, build, and test
+      - name: pnpm install, build, and test
+        working-directory: ./backend
         run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+          pnpm install
+          pnpm run build --if-present
+          pnpm run test --if-present
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: .
+          path: ./backend
 
   deploy:
     runs-on: ubuntu-latest
