@@ -1,24 +1,20 @@
-<script setup>
-import { ref, onMounted } from 'vue';
+<script setup lang="ts">
+import {ref} from "vue";
 import axios from 'axios';
+const serverUrl="http://localhost:3000";
 
-const message = ref('まだデータがありません');
-
-onMounted(() => {
-  // ステップ2で起動したバックエンドのAPIにアクセス
-  axios.get('http://localhost:3000/api/message')
-    .then(response => {
-      message.value = response.data.message;
+let counter=ref(0);
+function clickhandlar(){
+  axios.get(serverUrl+"/api/count")
+    .then(res=>{
+      counter.value=res.data.count;
     })
-    .catch(error => {
-      console.error('エラー:', error);
-      message.value = 'データの取得に失敗しました';
-    });
-});
+    .catch(err=>console.log("error"));
+}
 </script>
 
 <template>
-  <h1>Vue + Node.js (pnpm) 連携テスト</h1>
   <h2>バックエンドからのメッセージ:</h2>
-  <p>{{ message }}</p>
+  <p>{{ counter }}</p>
+  <button @click="clickhandlar">click</button>
 </template>
