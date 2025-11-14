@@ -5,9 +5,10 @@ const serverUrl="http://localhost:3000";
 
 let counter=ref(0);
 function clickhandlar(){
-  axios.get(serverUrl+"/api/count")
+  axios.get(serverUrl+"/api/plus")
     .then(res=>{
       counter.value=res.data.count;
+      console.log(res.data.count)
     })
     .catch(err=>console.log("error"));
 }
