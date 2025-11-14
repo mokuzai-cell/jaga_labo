@@ -1,0 +1,17 @@
+# OSファイル
+.DS_Store
+Thumbs.db
+
+# Node.js
+node_modules/
+dist/
+.env
+*.log
+
+# Vite (Vue)
+/frontend/.pnpm-store/
+/frontend/dist/
+
+# IDE
+.vscode/
+.idea/
