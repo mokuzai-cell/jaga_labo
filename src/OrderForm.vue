@@ -65,12 +65,20 @@ function makeOrder() {
   }
   return order
 }
+function getmoney() {
+  if (goods.money) {
+    if (goods.money[type.value]) {
+      return goods.money[type.value]
+    }
+  }
+  return 0
+}
 </script>
 <template>
   <div class="formWrapper">
     <div>
-      <img v-if="imgsrc" :src="imgsrc" class="formImg" />
-      <p v-if="!imgsrc" class="formImg noimg">no image</p>
+      <!--<img v-if="imgsrc" :src="imgsrc" class="formImg" />
+      <p v-if="!imgsrc" class="formImg noimg">no image</p>-->
     </div>
     <div class="mini_wrapper">
       <div class="wrap_title">
@@ -94,6 +102,7 @@ function makeOrder() {
         <button class="pmBtn" @click="() => countHandlar(1)">+</button>
       </div>
     </div>
+    <p class="allmoney">合計：{{ (getmoney() ?? 0) * count }} 円</p>
     <button id="confirmBtn" @click="clickHandlar">決定</button>
   </div>
 </template>
@@ -112,6 +121,10 @@ function makeOrder() {
     color: blue;
     cursor: pointer;
   }
+}
+.allmoney {
+  font-size: 1.5em;
+  margin-top: 40px;
 }
 a:hover {
   color: aqua;
@@ -164,7 +177,7 @@ a:hover {
   border-bottom: none;
 }
 .formImg {
-  width: 75%;
+  width: 50%;
   aspect-ratio: 3 / 2;
   margin: 0 auto;
 }

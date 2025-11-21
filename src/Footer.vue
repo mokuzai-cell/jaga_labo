@@ -7,6 +7,7 @@ let nowTab = defineModel<'main' | 'order' | 'history' | 'us'>()
 
 function changeHandler(tab: 'main' | 'order' | 'history' | 'us') {
   nowTab.value = tab
+  localStorage.setItem('tab', tab)
 }
 </script>
 

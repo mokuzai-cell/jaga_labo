@@ -5,6 +5,7 @@ let nowTab = defineModel<'main' | 'order' | 'history' | 'us'>()
 
 function changeTab(newTab: 'main' | 'order' | 'history' | 'us') {
   nowTab.value = newTab
+  localStorage.setItem('tab', newTab)
 }
 </script>
 

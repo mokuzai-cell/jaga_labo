@@ -19,11 +19,16 @@ onMounted(() => {
     let oh2 = JSON.parse(oh)
     orderHistory = oh2
   }
+  let tb = localStorage.getItem('tab')
+  if (tb && tb != '') {
+    if (tb == 'main' || tb == 'order' || tb == 'history' || tb == 'us') {
+      nowTab.value = tb
+    }
+  }
 })
 </script>
 
 <template>
-  <title>ロボットクリエイターズ　じゃがバタ生成ラボ</title>
   <header>じゃがバタ生成ラボ</header>
   <main>
     <Tab_main v-if="nowTab == 'main'" v-model="nowTab" />
