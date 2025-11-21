@@ -3,38 +3,32 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # メインブランチにプッシュされたときに実行
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # gh-pagesブランチの作成・更新に必須
-      pages: write    # GitHub Pagesのデプロイに必要
-      id-token: write # 認証のために必要
+      contents: write
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 1. Node.js環境のセットアップ (npmとキャッシュを含む)
       - name: Set up Node.js Environment
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # LTS バージョン
-          cache: 'npm'       # npm キャッシュを使用するように設定
+          node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies and Build
-        # npm コマンドは actions/setup-node@v4 によって自動的に利用可能になります
         run: |
           npm install
           npm run build
 
-      # GitHub Pagesのデプロイアクション
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Viteのビルド成果物ディレクトリを指定
           publish_dir: ./dist
-          publish_branch: 'gh-pages'
+          publish_branch: gh-pages
