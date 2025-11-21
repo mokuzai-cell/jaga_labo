@@ -9,9 +9,9 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # リポジトリへの書き込み（ブランチ作成・プッシュ）に必要
+      contents: write # gh-pagesブランチの作成・更新に必須
       pages: write # GitHub Pagesのデプロイに必要
-      id-token: write # OIDC認証の取得に必要
+      id-token: write # 認証のために必要
 
     steps:
       - name: Checkout Repository
@@ -25,14 +25,14 @@ jobs:
           cache: 'pnpm'
           cache-dependency-path: pnpm-lock.yaml
 
-      # 2. pnpmの実行ファイルをセットアップ（このステップがpnpmをPATHに追加します）
+      # 2. pnpmの実行ファイルをセットアップ（pnpmをPATHに追加）
       - name: Set up pnpm executable
         uses: pnpm/action-setup@v4
         with:
-          run_install: false
+          run_install: false # インストールは次のステップで行う
 
       - name: Install dependencies and Build
-        # pnpm が正しく PATH に追加されているため、コマンドが実行可能に
+        # pnpm install/buildが実行可能
         run: |
           pnpm install
           pnpm run build
