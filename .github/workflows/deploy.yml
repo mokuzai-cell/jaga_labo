@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       # 1. Node.js環境（キャッシュ）をセットアップ
+      #    pnpm のキャッシュ設定もここで行う
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -26,17 +27,18 @@ jobs:
           cache-dependency-path: pnpm-lock.yaml
 
       # 2. pnpmの実行ファイルをセットアップ（pnpmをPATHに追加）
+      #    このステップが pnpm コマンドを有効にします。
       - name: Set up pnpm executable
         uses: pnpm/action-setup@v4
         with:
-          run_install: false # インストールは次のステップで行う
+          run_install: false # 実行可能にするだけで、インストールは後で
 
+      # 3. 依存関係のインストールとビルド
+      #    ここで pnpm コマンドが実行されます
       - name: Install dependencies and Build
-        # pnpm install/buildが実行可能
         run: |
           pnpm install
           pnpm run build
-
       # GitHub Pagesのデプロイアクション
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
