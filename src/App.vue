@@ -4,7 +4,10 @@ import OrderForm from './OrderForm.vue'
 import QRgenerator from './QRgenerator.vue'
 import { goods, type Order } from './const'
 import Footer from './Footer.vue'
+import Tab_main from './Tab_main.vue'
 import Tab_order from './Tab_order.vue'
+import Tab_history from './Tab_history.vue'
+import Tab_us from './Tab_us.vue'
 
 let orderHistory = ref<Order[]>([])
 
@@ -22,9 +25,10 @@ onMounted(() => {
 <template>
   <header>じゃがバタ生成ラボ</header>
   <main>
-    {{ nowTab }}
-    <Tab_order v-model="orderHistory" />
-    <h2>注文</h2>
+    <Tab_main v-if="nowTab == 'main'" v-model="nowTab" />
+    <Tab_order v-if="nowTab == 'order'" v-model="orderHistory" />
+    <Tab_history v-if="nowTab == 'history'" v-model="orderHistory" />
+    <Tab_us v-if="nowTab == 'us'" />
   </main>
   <Footer v-model="nowTab" />
 </template>
@@ -41,10 +45,8 @@ header {
   padding-bottom: 0.5em;
 }
 main {
-  height: calc(100dvh - 6em);
+  height: calc(100dvh - 10em);
   max-width: 400px;
   margin: 3em auto;
-  display: flex;
-  flex-direction: column;
 }
 </style>

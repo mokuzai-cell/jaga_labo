@@ -67,34 +67,106 @@ function makeOrder() {
 }
 </script>
 <template>
-  <div>
-    <img v-if="imgsrc" :src="imgsrc" class="formImg" />
-    <p v-if="!imgsrc" class="formImg noimg">no image</p>
-  </div>
-  <div>
-    <div class="wrap_title">
-      <p>サイズ</p>
-      <a @click="resetType">リセット</a>
+  <div class="formWrapper">
+    <div>
+      <img v-if="imgsrc" :src="imgsrc" class="formImg" />
+      <p v-if="!imgsrc" class="formImg noimg">no image</p>
     </div>
-    <button class="pmBtn" @click="() => typeHandlar(-1)">-</button>
-    <span class="selectedSpan">{{ goods.types[type] }}</span>
-    <button class="pmBtn" @click="() => typeHandlar(1)">+</button>
-  </div>
-  <div>
-    <div class="wrap_title">
-      <p>個数</p>
-      <a @click="resetCount">リセット</a>
+    <div class="mini_wrapper">
+      <div class="wrap_title">
+        <p>サイズ</p>
+        <a @click="resetType">リセット</a>
+      </div>
+      <div class="wrap_value">
+        <button class="pmBtn" @click="() => typeHandlar(-1)">-</button>
+        <span class="selectedSpan">{{ goods.types[type] }}</span>
+        <button class="pmBtn" @click="() => typeHandlar(1)">+</button>
+      </div>
     </div>
-    <button class="pmBtn" @click="() => countHandlar(-1)">-</button>
-    <span class="selectedSpan">{{ count }}</span>
-    <button class="pmBtn" @click="() => countHandlar(1)">+</button>
+    <div class="mini_wrapper">
+      <div class="wrap_title">
+        <p>個数</p>
+        <a @click="resetCount">リセット</a>
+      </div>
+      <div class="wrap_value">
+        <button class="pmBtn" @click="() => countHandlar(-1)">-</button>
+        <span class="selectedSpan">{{ count }}</span>
+        <button class="pmBtn" @click="() => countHandlar(1)">+</button>
+      </div>
+    </div>
+    <button id="confirmBtn" @click="clickHandlar">決定</button>
   </div>
-  <button id="confirmBtn" @click="clickHandlar">決定</button>
 </template>
 <style scoped>
+.formWrapper {
+  text-align: center;
+}
+.wrap_title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  p {
+    font-size: 1.2em;
+  }
+  a {
+    color: blue;
+    cursor: pointer;
+  }
+}
+a:hover {
+  color: aqua;
+  text-decoration: underline;
+}
+.wrap_value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  span {
+    font-size: 1.5em;
+  }
+  button {
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    background: #668ad8; /*ボタン色*/
+    color: #fff;
+    border-bottom: solid 4px #627295;
+    border-radius: 32px;
+    font-size: 2em;
+    margin: 0 32px;
+    border: none;
+  }
+  button:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px); /*下に動く*/
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); /*影を小さく*/
+    border-bottom: none;
+  }
+}
+#confirmBtn {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  background: #668ad8; /*ボタン色*/
+  color: #fff;
+  border-bottom: solid 4px #627295;
+  border-radius: 32px;
+  font-size: 1.5em;
+  margin: 0 32px;
+  margin-top: 1.5em;
+  width: 80%;
+  border: none;
+}
+#confirmBtn:active {
+  -webkit-transform: translateY(4px);
+  transform: translateY(4px); /*下に動く*/
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); /*影を小さく*/
+  border-bottom: none;
+}
 .formImg {
-  width: 50%;
+  width: 75%;
   aspect-ratio: 3 / 2;
+  margin: 0 auto;
 }
 .noimg {
   background-color: #aaa;
