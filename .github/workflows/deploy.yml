@@ -9,27 +9,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # このアクションがリポジトリに書き込みを行うために必要
-      pages: write # GitHub Pagesにデプロイするために必要
-      id-token: write # デプロイ認証のために必要
+      contents: write # リポジトリへの書き込み（ブランチ作成・プッシュ）に必要
+      pages: write # GitHub Pagesのデプロイに必要
+      id-token: write # OIDC認証の取得に必要
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      # Node.jsとpnpmのセットアップをactions/setup-nodeに統合
+      - name: Set up Node.js and pnpm
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          # pnpm の依存関係をキャッシュ
           cache: 'pnpm'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8 # またはプロジェクトで使用しているバージョン
-          run_install: false # 後のステップで実行するためここではfalse
+          # ⭐ これにより pnpm が自動的にインストールされ、PATHに追加されます
 
       - name: Install dependencies and Build
+        # pnpm が正しく PATH に追加されているはず
         run: |
           pnpm install
           pnpm run build
@@ -39,6 +37,6 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # Viteのビルド成果物ディレクトリ（デフォルトはdist）を指定
+          # Viteのビルド成果物ディレクトリを指定
           publish_dir: ./dist
           publish_branch: 'gh-pages'
