@@ -17,23 +17,22 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          run_install: false
-
-      # Node.jsとpnpmのセットアップをactions/setup-nodeに統合
+      # 1. Node.js環境（キャッシュ）をセットアップ
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          # pnpm の依存関係をキャッシュ
           cache: 'pnpm'
           cache-dependency-path: pnpm-lock.yaml
-          # ⭐ これにより pnpm が自動的にインストールされ、PATHに追加されます
+
+      # 2. pnpmの実行ファイルをセットアップ（このステップがpnpmをPATHに追加します）
+      - name: Set up pnpm executable
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
 
       - name: Install dependencies and Build
-        # pnpm が正しく PATH に追加されているはず
+        # pnpm が正しく PATH に追加されているため、コマンドが実行可能に
         run: |
           pnpm install
           pnpm run build
