@@ -23,6 +23,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <title>ロボットクリエイターズ　じゃがバタ生成ラボ</title>
   <header>じゃがバタ生成ラボ</header>
   <main>
     <Tab_main v-if="nowTab == 'main'" v-model="nowTab" />
