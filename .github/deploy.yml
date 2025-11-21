@@ -34,3 +34,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # Viteのビルド成果物ディレクトリ（デフォルトはdist）を指定
           publish_dir: ./dist
+          publish_branch: 'gh-pages'
