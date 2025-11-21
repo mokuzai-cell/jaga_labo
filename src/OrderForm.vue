@@ -48,7 +48,7 @@ function makeId(time: number): string {
   return t
 }
 function clickHandlar() {
-  if (confirm('注文を確定します\nよろしいですか？')) {
+  if (confirm('注文を確定します。\nよろしいですか？')) {
     emit('confirmHandlar', makeOrder())
   } else {
     alert('キャンセルしました。')
