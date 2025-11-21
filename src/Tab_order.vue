@@ -28,7 +28,7 @@ function order2json(order: Order) {}
     <p>{{ orderId }}</p>
     <p>合計金額：{{ allMoney }}</p>
 
-    <p>レジに上のQRコードをかざして、お会計をお願いします。</p>
+    <p>レジに上のQRコードをかざし、お会計をお願いします。</p>
     <button popovertarget="orderPopup" popovertargetaction="hide">閉じる</button>
   </div>
 </template>
