@@ -29,6 +29,7 @@ function historyPush(neworder: Order) {
 <template>
   <h2>商品の注文</h2>
   <OrderForm @confirmHandlar="confirmHandler" />
+  <div style="height: 300px"></div>
   <div id="orderPopup" popover="manual" ref="orderPopRef">
     <QRgenerator :value="orderId" class="qr" :style="'width:' + qrwidth + 'px'" />
     <div ref="pPopRef">
