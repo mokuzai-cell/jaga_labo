@@ -14,7 +14,7 @@ const countmax = goods.maxCount
 let type = ref(0)
 let count = ref(goods.minCount)
 
-function typeHandlar(pm: 1 | -1) {
+/*function typeHandlar(pm: 1 | -1) {
   let a = type.value + pm
   if (a >= typeCount) return
   if (a < 0) return
@@ -23,7 +23,7 @@ function typeHandlar(pm: 1 | -1) {
 }
 function resetType() {
   type.value = 0
-}
+}*/
 function countHandlar(pm: 1 | -1) {
   let a = count.value + pm
   if (a > countmax) return
@@ -81,7 +81,7 @@ function getmoney() {
       <p v-if="!imgsrc" class="formImg noimg">no image</p>-->
     </div>
     <div class="mini_wrapper">
-      <div class="wrap_title">
+      <!--<div class="wrap_title">
         <p>サイズ</p>
         <a @click="resetType">リセット</a>
       </div>
@@ -89,6 +89,22 @@ function getmoney() {
         <button class="pmBtn" @click="() => typeHandlar(-1)">-</button>
         <span class="selectedSpan">{{ goods.types[type] }}</span>
         <button class="pmBtn" @click="() => typeHandlar(1)">+</button>
+      </div>-->
+      <div class="wrap_title">
+        <p>トッピング</p>
+      </div>
+      <div style="display: grid; width: 100%">
+        <div class="wrap_value2" v-for="(t, idx) of goods.types">
+          <input
+            type="radio"
+            name="typevalue"
+            :id="'type' + idx"
+            :value="idx"
+            v-model="type"
+            :checked="type == idx"
+          />
+          <label :for="'type' + idx">{{ t }}</label>
+        </div>
       </div>
     </div>
     <div class="mini_wrapper">
@@ -154,6 +170,20 @@ a:hover {
     transform: translateY(4px); /*下に動く*/
     box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2); /*影を小さく*/
     border-bottom: none;
+  }
+}
+.wrap_value2 {
+  display: flex;
+  padding: 8px;
+  input {
+    flex-shrink: 0;
+    margin-right: 3em;
+    width: 1.5em;
+  }
+  label {
+    flex-shrink: 1;
+    text-align: left;
+    font-size: 1.5em;
   }
 }
 #confirmBtn {

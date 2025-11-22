@@ -7,8 +7,8 @@ export interface Order {
 }
 
 export const goods = {
-  types: ['小', '中', '大'],
+  types: ['じゃがバター（￥３５０）', '　＋バター２倍（＋￥５０）'],
   minCount: 1,
   maxCount: 99,
-  money: [200, 300, 400],
+  money: [350, 400],
 }

@@ -40,6 +40,7 @@ function showPopover(idx:number){
 </script>
 
 <template>
+  <h2 style="text-align: center;">注文履歴</h2>
   <div v-for="(order, idx) in orderHistory" class="historyWrapper" @click="()=>showPopover(idx)">
     <div class="historymini">
         <p class="ID">#{{ idx }}</p>
@@ -50,6 +51,7 @@ function showPopover(idx:number){
         <p class="historyCount">個数：<span>{{ order.count }}</span></p>
     </div>  
   </div>
+  <div style="height:200px"></div>
   <img :src="trash" class="trashBtn" @click="trashHandler"></img>
   <div id="orderedPopup" popover="auto" ref="orderedPopRef">
     <div v-if="showorder">

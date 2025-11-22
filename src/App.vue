@@ -44,7 +44,7 @@ header {
   top: 0;
   left: 0;
   width: 100dvw;
-  background-color: blue;
+  background-color: #799deb;
   text-align: center;
   color: white;
   padding-top: 0.5em;

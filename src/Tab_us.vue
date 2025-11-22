@@ -4,6 +4,7 @@ import robologo from './assets/robokuri.jpg'
 
 <template>
   <div>
+    <h2>ロボットクリエイターズについて</h2>
     <img id="iconImg" :src="robologo" />
 
     <h3>紹介文</h3>
@@ -29,7 +30,7 @@ div {
   text-align: center;
 }
 #iconImg {
-  width: 85%;
+  width: 75%;
   object-fit: contain;
 }
 .mg {
