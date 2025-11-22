@@ -47,12 +47,14 @@ header {
   background-color: #799deb;
   text-align: center;
   color: white;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
+  padding-top: 7.5px;
+  padding-bottom: 7.5px;
 }
 main {
-  height: calc(100dvh - 10em);
+  height: calc(100dvh - 45px - min(80px, 36dvw) - 15px);
   max-width: 400px;
-  margin: 3em auto;
+  margin: 0 auto;
+  margin-top: 60px;
+  margin-bottom: auto;
 }
 </style>

@@ -58,16 +58,16 @@ h2 {
 }
 #confirmBtn {
   display: inline-block;
-  padding: 0.25em 0.5em;
+  padding: 4px 8px;
   text-decoration: none;
   background: #668ad8; /*ボタン色*/
   color: #fff;
   border-bottom: solid 4px #627295;
   border-radius: 32px;
-  font-size: 1em;
-  padding: 0.5em 0;
+  font-size: 15px;
+  padding: 8px 0;
   margin: 0 32px;
-  margin-top: 0.5em;
+  margin-top: 8px;
   width: 80%;
   border: none;
 }

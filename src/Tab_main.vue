@@ -33,7 +33,7 @@ h2 {
 }
 button {
   display: inline-block;
-  padding: 1em 1em;
+  padding: 15px;
   text-decoration: none;
   background: #668ad8; /*ボタン色*/
   color: #fff;

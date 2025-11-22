@@ -94,8 +94,8 @@ function showPopover(idx: number) {
 </template>
 <style scoped>
 .historyWrapper {
-  padding: 0.5em 1em;
-  margin: 2em 0;
+  padding: 8px 16px;
+  margin: 32px 0;
   color: #5d627b;
   background: white;
   border-left: solid 5px #5d627b;
@@ -108,8 +108,8 @@ function showPopover(idx: number) {
   width: 40px;
   height: 40px;
   position: absolute;
-  right: 0.3em;
-  top: 3em;
+  right: 5px;
+  top: 45px;
   padding: 10px;
   background-color: #e07474;
   border-radius: 30px;
@@ -125,7 +125,7 @@ function showPopover(idx: number) {
   p {
     span {
       color: black;
-      font-size: 1.1em;
+      font-size: 18px;
     }
   }
 }
@@ -135,8 +135,8 @@ function showPopover(idx: number) {
   justify-content: space-around;
 }
 .ID {
-  font-size: 2em;
-  margin-right: 2em;
+  font-size: 30px;
+  margin-right: 30px;
 }
 #orderedPopup {
   width: 80%;
@@ -149,15 +149,15 @@ function showPopover(idx: number) {
 }
 button {
   display: inline-block;
-  padding: 0.5em 0.5em;
+  padding: 8px 8px;
   text-decoration: none;
   background: #668ad8; /*ボタン色*/
   color: #fff;
   border-bottom: solid 4px #627295;
   border-radius: 32px;
-  font-size: 1em;
+  font-size: 16px;
   margin: 0 32px;
-  margin-top: 0.5em;
+  margin-top: 8px;
   border: none;
 }
 button:active {

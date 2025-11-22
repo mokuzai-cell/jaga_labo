@@ -125,13 +125,14 @@ function getmoney() {
 <style scoped>
 .formWrapper {
   text-align: center;
+  overflow-y: auto;
 }
 .wrap_title {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   p {
-    font-size: 1.2em;
+    font-size: 18px;
   }
   a {
     color: blue;
@@ -139,7 +140,7 @@ function getmoney() {
   }
 }
 .allmoney {
-  font-size: 1.5em;
+  font-size: 18px;
   margin-top: 40px;
 }
 a:hover {
@@ -151,17 +152,17 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   span {
-    font-size: 1.5em;
+    font-size: 18px;
   }
   button {
     display: inline-block;
-    padding: 0.25em 0.5em;
+    padding: 4px 8px;
     text-decoration: none;
     background: #668ad8; /*ボタン色*/
     color: #fff;
     border-bottom: solid 4px #627295;
     border-radius: 32px;
-    font-size: 2em;
+    font-size: 30px;
     margin: 0 32px;
     border: none;
   }
@@ -177,26 +178,26 @@ a:hover {
   padding: 8px;
   input {
     flex-shrink: 0;
-    margin-right: 3em;
-    width: 1.5em;
+    margin-right: 45px;
+    width: 18px;
   }
   label {
     flex-shrink: 1;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 18px;
   }
 }
 #confirmBtn {
   display: inline-block;
-  padding: 0.25em 0.5em;
+  padding: 4px 8px;
   text-decoration: none;
   background: #668ad8; /*ボタン色*/
   color: #fff;
   border-bottom: solid 4px #627295;
   border-radius: 32px;
-  font-size: 1.5em;
+  font-size: 18px;
   margin: 0 32px;
-  margin-top: 1.5em;
+  margin-top: 18px;
   width: 80%;
   border: none;
 }

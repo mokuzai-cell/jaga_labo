@@ -101,11 +101,11 @@ input {
 button {
   background-color: transparent;
   border: none;
-  width: 35%;
+  width: 35dvw;
   max-width: 80px;
   aspect-ratio: 1 / 1;
   svg {
-    transform: translateY(0.5em);
+    transform: translateY(7.5px);
     object-fit: contain;
     animation: small 0.5s ease-in-out forwards;
   }
